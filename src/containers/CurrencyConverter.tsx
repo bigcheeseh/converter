@@ -1,7 +1,7 @@
 import * as React from "react";
 import CurrencyInputsList from "../components/CurrencyInputsList";
 import SwitchButton from "../components/SwitchButton";
-import { byn, usd } from "../config/currencies";
+import { getCurrencies } from "../helpers/getCurrencies";
 import "./CurrencyConverter.css";
 
 interface IState {
@@ -14,7 +14,7 @@ interface IState {
 
 class CurrencyConverter extends React.PureComponent<{}, IState> {
   public state = {
-    currenciesList: [usd, byn],
+    currenciesList: getCurrencies(),
   };
   public render() {
     return (
