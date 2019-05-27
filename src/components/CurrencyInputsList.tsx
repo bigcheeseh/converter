@@ -11,12 +11,12 @@ interface IProps {
 }
 
 interface IState {
-    amount: number | undefined,
+    amount: number | string,
 }
 
 class CurrencyInputsList extends React.PureComponent<IProps, IState> {
     public state = {
-        amount: undefined,
+        amount: "",
     };
     public render() {
         return (
@@ -26,9 +26,9 @@ class CurrencyInputsList extends React.PureComponent<IProps, IState> {
         );
     }
 
-    private changeAmount = (amount: number | undefined) => {
+    private changeAmount = (amount: number | string) => {
         this.setState({
-            amount,
+            amount: amount === 0 ? "" : amount,
         })
     }
 

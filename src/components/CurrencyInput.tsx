@@ -1,10 +1,12 @@
 import * as React from 'react';
 import './CurrencyInput.css';
 
+type Amount = string | number;
+
 interface IProps {
-  amount: number | undefined;
+  amount: Amount;
   currencyName: string;
-  changeAmount: ($: number | undefined) => void;
+  changeAmount: (amount: Amount) => void;
   operation: { name: string, rate: number };
 }
 
@@ -26,16 +28,16 @@ class CurrencyInput extends React.PureComponent<IProps> {
     );
   }
 
-  private convertFromUsd = (amount: number | undefined) => {
-    if (!amount) {
+  private convertFromUsd = (amount: Amount) => {
+    if (!amount || typeof amount !== "number") {
       return amount;
     }
 
     return this.roundTo(amount / this.props.operation.rate);
   }
 
-  private convertToUsd = (amount: number | undefined) => {
-    if (!amount) {
+  private convertToUsd = (amount: Amount) => {
+    if (!amount || typeof amount !== "number") {
       return amount;
     }
     return this.roundTo(amount * this.props.operation.rate);
