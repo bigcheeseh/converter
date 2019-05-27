@@ -15,7 +15,7 @@ class CurrencyInput extends React.PureComponent<IProps> {
       <div className="input-container">
         <input type="number"
           className="input"
-          value={!amount ? undefined : this.convertFromUsd(amount)}
+          value={this.convertFromUsd(amount)}
           placeholder={operation.name}
           onChange={this.handleChange}
         />
